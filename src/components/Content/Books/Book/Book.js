@@ -1,23 +1,27 @@
 import React from 'react';
 import classes from './Book.module.css';
+import kangaroo from '../../../../assets/images/kangaroo.png';
 
 const Book = (props) => (
   <div className={classes.Book}>
     <div className={classes.BookGradient}>
       <div className={classes.RemoveBook}>x</div>
     </div>
-    <div className="book-classics">
+    <div className={classes.BookClassics}>
       <span>Kelly</span>
-      <img src="kangaroo.png" alt="Kangaroo Icon"></img>
+      <img src={kangaroo} width="40" alt="Kangaroo Icon"></img>
       <span>Classics</span>
     </div>
-    <div className="book-info">
-      <div className="book-author">Big Kev</div>
-      <div className="book-title">Yarns from Ballarat and Victoria</div>
+    <div className={classes.BookInfo}>
+      <div className={classes.BookAuthor}>Big Kev</div>
+      <div className={classes.BookTitle}>Yarns from Ballarat and Victoria</div>
     </div>
-    <div className="pages-block">
+    <div className={classes.PagesBlock}>
       <div>234 pages</div>
-      <button className="read-button not">Reading/Finished</button>
+      <button className={classes.ReadButton}>Reading/Finished</button>
+      <button className={[classes.ReadButton, classes.Not].join(' ')}>
+        Reading/Finished
+      </button>
     </div>
   </div>
 );

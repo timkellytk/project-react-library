@@ -7,9 +7,8 @@ const Books = () => (
     <div class="container">
       <div class={classes.BookGrid}>
         <Book />
-        <h1>grid please</h1>
-        <h1>grid please</h1>
-        <h1>grid please</h1>
+        <Book />
+        <Book />
       </div>
     </div>
   </div>
