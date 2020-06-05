@@ -1,0 +1,10 @@
+.headerSection {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-image: radial-gradient(
+    circle farthest-corner at 100% 50%,
+    #21d4fd,
+    #b721ff
+  );
+  color: #fff;
+}

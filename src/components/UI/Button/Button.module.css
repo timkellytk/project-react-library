@@ -1,0 +1,18 @@
+.Button {
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: auto;
+  padding: 15px 20px;
+  background-color: #b721ff;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+.Button:hover {
+  -webkit-filter: brightness(90%);
+  filter: brightness(90%);
+}
