@@ -36,7 +36,7 @@ class App extends Component {
     this.setState({ showModal: false });
   };
 
-  toggleReadHandler = (index) => {
+  toggleBookHandler = (index) => {
     const updatedBooks = [...this.state.books];
     const updatedBook = updatedBooks[index];
 
@@ -61,7 +61,7 @@ class App extends Component {
           modalStatus={this.state.showModal}
           books={this.state.books}
           deleteBook={this.deleteBookHandler}
-          toggleBook={this.toggleReadHandler}
+          toggleBook={this.toggleBookHandler}
         />
       </React.Fragment>
     );
