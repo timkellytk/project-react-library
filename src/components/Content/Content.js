@@ -2,9 +2,13 @@ import React from 'react';
 import NewBook from './NewBook/NewBook';
 import Books from './Books/Books';
 
-const Content = () => (
+const Content = (props) => (
   <React.Fragment>
-    <NewBook />
+    <NewBook
+      showModalHandler={props.showModal}
+      closeModalHandler={props.closeModal}
+      modalState={props.modalStatus}
+    />
     <Books />
   </React.Fragment>
 );

@@ -17,6 +17,10 @@
   background-color: rgba(0, 0, 0, 0.81);
 }
 
+.NewBookSection.Show {
+  display: flex;
+}
+
 .NewBookFormContainer {
   width: 70%;
   max-width: 700px;
