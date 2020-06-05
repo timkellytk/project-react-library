@@ -9,7 +9,11 @@ const Content = (props) => (
       closeModalHandler={props.closeModal}
       modalState={props.modalStatus}
     />
-    <Books />
+    <Books
+      books={props.books}
+      delete={props.deleteBook}
+      toggle={props.toggleBook}
+    />
   </React.Fragment>
 );
 

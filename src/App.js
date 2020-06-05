@@ -5,6 +5,26 @@ import './App.css';
 
 class App extends Component {
   state = {
+    books: [
+      {
+        title: 'This book is full of yarns of Ballarat',
+        author: 'Big Kev',
+        pages: 123,
+        read: true,
+      },
+      {
+        title: 'Byron bay, where it all started with emma',
+        author: 'Harry Mcallister',
+        pages: 234,
+        read: false,
+      },
+      {
+        title: "Why I won't drive to Newport",
+        author: 'Jack Penny',
+        pages: 523,
+        read: false,
+      },
+    ],
     showModal: false,
   };
 
@@ -16,6 +36,21 @@ class App extends Component {
     this.setState({ showModal: false });
   };
 
+  toggleReadHandler = (index) => {
+    const updatedBooks = [...this.state.books];
+    const updatedBook = updatedBooks[index];
+
+    updatedBook.read = !this.state.books[index].read;
+    this.setState({ books: updatedBooks });
+  };
+
+  deleteBookHandler = (id) => {
+    const updatedBooks = this.state.books.filter((book, index) => {
+      return book.title + index !== id;
+    });
+    this.setState({ books: updatedBooks });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -24,6 +59,9 @@ class App extends Component {
           showModal={this.showModalHandler}
           closeModal={this.closeModalHandler}
           modalStatus={this.state.showModal}
+          books={this.state.books}
+          deleteBook={this.deleteBookHandler}
+          toggleBook={this.toggleReadHandler}
         />
       </React.Fragment>
     );

@@ -3,8 +3,8 @@ import Button from '../../UI/Button/Button';
 import NewBookModal from './NewBookModal/NewBookModal';
 
 const NewBook = (props) => (
-  <div class="section">
-    <div class="container">
+  <div className="section">
+    <div className="container">
       <div>
         <h1>Books</h1>
         <Button clicked={props.showModalHandler}>Add New Book</Button>

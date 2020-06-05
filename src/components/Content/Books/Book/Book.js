@@ -1,29 +1,34 @@
 import React from 'react';
 import classes from './Book.module.css';
 import kangaroo from '../../../../assets/images/kangaroo.png';
+import UtilityButton from './UtilityButton/UtilityButton';
 
-const Book = (props) => (
-  <div className={classes.Book}>
-    <div className={classes.BookGradient}>
-      <div className={classes.RemoveBook}>x</div>
+const Book = (props) => {
+  return (
+    <div className={classes.Book}>
+      <div className={classes.BookGradient}>
+        <div
+          className={classes.RemoveBook}
+          onClick={() => props.delete(props.id)}
+        >
+          x
+        </div>
+      </div>
+      <div className={classes.BookClassics}>
+        <span>Kelly</span>
+        <img src={kangaroo} width="40" alt="Kangaroo Icon"></img>
+        <span>Classics</span>
+      </div>
+      <div className={classes.BookInfo}>
+        <div className={classes.BookAuthor}>{props.author}</div>
+        <div className={classes.BookTitle}>{props.title}</div>
+      </div>
+      <div className={classes.PagesBlock}>
+        <div>{props.pages} pages</div>
+        <UtilityButton read={props.read} clicked={props.toggle} />
+      </div>
     </div>
-    <div className={classes.BookClassics}>
-      <span>Kelly</span>
-      <img src={kangaroo} width="40" alt="Kangaroo Icon"></img>
-      <span>Classics</span>
-    </div>
-    <div className={classes.BookInfo}>
-      <div className={classes.BookAuthor}>Big Kev</div>
-      <div className={classes.BookTitle}>Yarns from Ballarat and Victoria</div>
-    </div>
-    <div className={classes.PagesBlock}>
-      <div>234 pages</div>
-      <button className={classes.ReadButton}>Reading/Finished</button>
-      <button className={[classes.ReadButton, classes.Not].join(' ')}>
-        Reading/Finished
-      </button>
-    </div>
-  </div>
-);
+  );
+};
 
 export default Book;
