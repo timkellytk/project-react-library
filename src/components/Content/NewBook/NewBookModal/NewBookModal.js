@@ -63,7 +63,7 @@ class NewBookModal extends Component {
                   <input
                     type="checkbox"
                     checked={this.state.book.read}
-                    onClick={this.checkboxChangeHandler}
+                    onChange={this.checkboxChangeHandler}
                   />
                   <span className={classes.CheckboxLabel}>
                     Finished Reading

@@ -28,7 +28,20 @@ class App extends Component {
     showModal: false,
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const JSONbooks = localStorage.getItem('books');
+    const books = JSON.parse(JSONbooks);
+
+    if (JSONbooks && this.state.books !== books) {
+      this.updateStateBooks(books);
+    }
+  }
+
+  updateStateBooks = (updatedBooks) => {
+    this.setState({ books: updatedBooks });
+    const JSONbooks = JSON.stringify(updatedBooks);
+    localStorage.setItem('books', JSONbooks);
+  };
 
   showModalHandler = () => {
     this.setState({ showModal: true });
@@ -41,7 +54,7 @@ class App extends Component {
   addBookHandler = (event, book) => {
     event.preventDefault();
     const updatedBooks = this.state.books.concat(book);
-    this.setState({ books: updatedBooks });
+    this.updateStateBooks(updatedBooks);
     this.closeModalHandler();
   };
 
@@ -50,14 +63,14 @@ class App extends Component {
     const updatedBook = updatedBooks[index];
 
     updatedBook.read = !this.state.books[index].read;
-    this.setState({ books: updatedBooks });
+    this.updateStateBooks(updatedBooks);
   };
 
   deleteBookHandler = (id) => {
     const updatedBooks = this.state.books.filter((book, index) => {
       return book.title + index !== id;
     });
-    this.setState({ books: updatedBooks });
+    this.updateStateBooks(updatedBooks);
   };
 
   render() {
