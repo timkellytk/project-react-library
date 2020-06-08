@@ -11,6 +11,7 @@ const NewBook = (props) => (
         <NewBookModal
           modal={props.modalState}
           close={props.closeModalHandler}
+          add={props.addBook}
         />
       </div>
     </div>

@@ -28,12 +28,21 @@ class App extends Component {
     showModal: false,
   };
 
+  componentDidMount() {}
+
   showModalHandler = () => {
     this.setState({ showModal: true });
   };
 
   closeModalHandler = () => {
     this.setState({ showModal: false });
+  };
+
+  addBookHandler = (event, book) => {
+    event.preventDefault();
+    const updatedBooks = this.state.books.concat(book);
+    this.setState({ books: updatedBooks });
+    this.closeModalHandler();
   };
 
   toggleBookHandler = (index) => {
@@ -60,6 +69,7 @@ class App extends Component {
           closeModal={this.closeModalHandler}
           modalStatus={this.state.showModal}
           books={this.state.books}
+          addBook={this.addBookHandler}
           deleteBook={this.deleteBookHandler}
           toggleBook={this.toggleBookHandler}
         />

@@ -5,30 +5,19 @@ import Button from '../../../UI/Button/Button';
 
 class NewBookModal extends Component {
   state = {
-    title: '',
-    author: '',
-    pages: '',
-    read: true,
+    book: { title: '', author: '', pages: '', read: true },
   };
 
-  handleTitleChange = (event) => {
-    const updatedTitle = event.target.value;
-    this.setState({ title: updatedTitle });
+  inputChangeHandler = (event, property) => {
+    const updatedBook = { ...this.state.book };
+    updatedBook[property] = event.target.value;
+    this.setState({ book: updatedBook });
   };
 
-  handleAuthorChange = (event) => {
-    const updatedAuthor = event.target.value;
-    this.setState({ author: updatedAuthor });
-  };
-
-  handlePagesChange = (event) => {
-    const updatedPages = event.target.value;
-    this.setState({ pages: updatedPages });
-  };
-
-  handleCheckboxChange = (event) => {
-    const updatedCheckbox = event.target.checked;
-    this.setState({ read: updatedCheckbox });
+  checkboxChangeHandler = (event) => {
+    const updatedBook = { ...this.state.book };
+    updatedBook.read = event.target.checked;
+    this.setState({ book: updatedBook });
   };
 
   render() {
@@ -41,14 +30,14 @@ class NewBookModal extends Component {
         <div className={classes.NewBookFormContainer}>
           <h1>New Book</h1>
           <div>
-            <form>
+            <form onSubmit={(event) => this.props.add(event, this.state.book)}>
               <label>Title</label>
               <input
                 type="text"
                 className={classes.TextField}
                 placeholder="Book Title"
-                value={this.state.title}
-                onChange={this.handleTitleChange}
+                value={this.state.book.title}
+                onChange={(event) => this.inputChangeHandler(event, 'title')}
                 required
               />
               <label>Author</label>
@@ -56,8 +45,8 @@ class NewBookModal extends Component {
                 type="text"
                 className={classes.TextField}
                 placeholder="Author"
-                value={this.state.author}
-                onChange={this.handleAuthorChange}
+                value={this.state.book.author}
+                onChange={(event) => this.inputChangeHandler(event, 'author')}
                 required
               />
               <label>Pages</label>
@@ -65,16 +54,16 @@ class NewBookModal extends Component {
                 type="number"
                 className={classes.TextField}
                 placeholder="0"
-                value={this.state.pages}
-                onChange={this.handlePagesChange}
+                value={this.state.book.pages}
+                onChange={(event) => this.inputChangeHandler(event, 'pages')}
                 required
               />
               <div className={classes.CheckboxField}>
                 <label>
                   <input
                     type="checkbox"
-                    checked={this.state.read}
-                    onClick={this.handleCheckboxChange}
+                    checked={this.state.book.read}
+                    onClick={this.checkboxChangeHandler}
                   />
                   <span className={classes.CheckboxLabel}>
                     Finished Reading

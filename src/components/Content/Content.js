@@ -8,6 +8,7 @@ const Content = (props) => (
       showModalHandler={props.showModal}
       closeModalHandler={props.closeModal}
       modalState={props.modalStatus}
+      addBook={props.addBook}
     />
     <Books
       books={props.books}
