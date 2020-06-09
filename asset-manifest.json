@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/project-react-library/static/css/main.0ef946e2.chunk.css",
+    "main.js": "/project-react-library/static/js/main.4d223226.chunk.js",
+    "main.js.map": "/project-react-library/static/js/main.4d223226.chunk.js.map",
+    "runtime-main.js": "/project-react-library/static/js/runtime-main.a6e92b92.js",
+    "runtime-main.js.map": "/project-react-library/static/js/runtime-main.a6e92b92.js.map",
+    "static/js/2.addd5a9f.chunk.js": "/project-react-library/static/js/2.addd5a9f.chunk.js",
+    "static/js/2.addd5a9f.chunk.js.map": "/project-react-library/static/js/2.addd5a9f.chunk.js.map",
+    "index.html": "/project-react-library/index.html",
+    "precache-manifest.25a902dbaafc99c9f081d469814ae142.js": "/project-react-library/precache-manifest.25a902dbaafc99c9f081d469814ae142.js",
+    "service-worker.js": "/project-react-library/service-worker.js",
+    "static/css/main.0ef946e2.chunk.css.map": "/project-react-library/static/css/main.0ef946e2.chunk.css.map",
+    "static/js/2.addd5a9f.chunk.js.LICENSE.txt": "/project-react-library/static/js/2.addd5a9f.chunk.js.LICENSE.txt",
+    "static/media/kangaroo.png": "/project-react-library/static/media/kangaroo.d03651bc.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a6e92b92.js",
+    "static/js/2.addd5a9f.chunk.js",
+    "static/css/main.0ef946e2.chunk.css",
+    "static/js/main.4d223226.chunk.js"
+  ]
+}
