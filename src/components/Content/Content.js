@@ -1,14 +1,18 @@
 import React from 'react';
 import NewBook from './NewBook/NewBook';
+import NewBookModal from './NewBookModal/NewBookModal';
 import Books from './Books/Books';
 
 const Content = (props) => (
   <React.Fragment>
-    <NewBook
-      showModalHandler={props.showModal}
-      closeModalHandler={props.closeModal}
-      modalState={props.modalStatus}
-      addBook={props.addBook}
+    <NewBook showModalHandler={props.showModal} />
+    <NewBookModal
+      newBook={props.newBook}
+      add={props.addBook}
+      modal={props.modalStatus}
+      inputChangeHandler={props.inputChangeHandler}
+      checkboxChangeHandler={props.checkboxChangeHandler}
+      close={props.closeModal}
     />
     <Books
       books={props.books}

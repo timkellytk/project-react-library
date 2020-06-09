@@ -25,6 +25,7 @@ class App extends Component {
         read: false,
       },
     ],
+    newBook: { title: '', author: '', pages: '', read: true },
     showModal: false,
   };
 
@@ -41,6 +42,18 @@ class App extends Component {
     this.setState({ books: updatedBooks });
     const JSONbooks = JSON.stringify(updatedBooks);
     localStorage.setItem('books', JSONbooks);
+  };
+
+  inputChangeNewBookHandler = (event, property) => {
+    const updatedBook = { ...this.state.newBook };
+    updatedBook[property] = event.target.value;
+    this.setState({ newBook: updatedBook });
+  };
+
+  checkboxChangeNewBookHandler = (event) => {
+    const updatedBook = { ...this.state.newBook };
+    updatedBook.read = event.target.checked;
+    this.setState({ newBook: updatedBook });
   };
 
   showModalHandler = () => {
@@ -82,6 +95,9 @@ class App extends Component {
           closeModal={this.closeModalHandler}
           modalStatus={this.state.showModal}
           books={this.state.books}
+          newBook={this.state.newBook}
+          inputChangeHandler={this.inputChangeNewBookHandler}
+          checkboxChangeHandler={this.checkboxChangeNewBookHandler}
           addBook={this.addBookHandler}
           deleteBook={this.deleteBookHandler}
           toggleBook={this.toggleBookHandler}

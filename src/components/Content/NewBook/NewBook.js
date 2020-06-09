@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../../UI/Button/Button';
-import NewBookModal from './NewBookModal/NewBookModal';
 
 const NewBook = (props) => (
   <div className="section">
@@ -8,11 +7,6 @@ const NewBook = (props) => (
       <div>
         <h1>Books</h1>
         <Button clicked={props.showModalHandler}>Add New Book</Button>
-        <NewBookModal
-          modal={props.modalState}
-          close={props.closeModalHandler}
-          add={props.addBook}
-        />
       </div>
     </div>
   </div>
