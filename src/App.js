@@ -61,7 +61,10 @@ class App extends Component {
   };
 
   closeModalHandler = () => {
-    this.setState({ showModal: false });
+    this.setState({
+      showModal: false,
+      newBook: { title: '', author: '', pages: '', read: true },
+    });
   };
 
   addBookHandler = (event, book) => {
