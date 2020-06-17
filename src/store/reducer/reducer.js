@@ -57,6 +57,11 @@ const checkboxChangedHandler = (state) => {
   return updatedState;
 };
 
+const storeLocalBooks = (updatedBooks) => {
+  const JSONbooks = JSON.stringify(updatedBooks);
+  localStorage.setItem('books', JSONbooks);
+};
+
 const addBook = (state) => {
   const updatedBooks = state.books.concat(state.newBook);
   const updatedState = {
@@ -65,6 +70,7 @@ const addBook = (state) => {
     showModal: false,
     newBook: { title: '', author: '', pages: '', read: true },
   };
+  storeLocalBooks(updatedBooks);
   return updatedState;
 };
 
@@ -73,6 +79,7 @@ const deleteBook = (state, action) => {
     (book, index) => index !== action.index
   );
   const updatedState = { ...state, books: updatedBooks };
+  storeLocalBooks(updatedBooks);
   return updatedState;
 };
 
@@ -84,7 +91,18 @@ const toggleBook = (state, action) => {
   updatedBooks[action.index] = updatedBook;
 
   const updatedState = { ...state, books: updatedBooks };
+  storeLocalBooks(updatedBooks);
   return updatedState;
+};
+
+const getBooks = (state) => {
+  const JSONbooks = localStorage.getItem('books');
+  const books = JSON.parse(JSONbooks);
+
+  if (JSONbooks && state.books !== books) {
+    const updatedState = { ...state, books: books };
+    return updatedState;
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -103,6 +121,8 @@ const reducer = (state = initialState, action) => {
       return deleteBook(state, action);
     case actionTypes.TOGGLE_BOOK:
       return toggleBook(state, action);
+    case actionTypes.GET_BOOKS:
+      return getBooks(state);
     default:
       return state;
   }

@@ -2,59 +2,32 @@ import React, { Component } from 'react';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 import './App.css';
+import { connect } from 'react-redux';
+import * as actions from './store/actions/index';
 
 class App extends Component {
-  state = {
-    books: [
-      {
-        title: 'This book is full of yarns of Ballarat',
-        author: 'Big Kev',
-        pages: 123,
-        read: true,
-      },
-      {
-        title: 'Byron bay, where it all started with emma',
-        author: 'Harry Mcallister',
-        pages: 234,
-        read: false,
-      },
-      {
-        title: "Why I won't drive to Newport",
-        author: 'Jack Penny',
-        pages: 523,
-        read: false,
-      },
-    ],
-    newBook: { title: '', author: '', pages: '', read: true },
-    showModal: false,
-  };
-
   componentDidMount() {
-    const JSONbooks = localStorage.getItem('books');
-    const books = JSON.parse(JSONbooks);
-
-    if (JSONbooks && this.state.books !== books) {
-      this.updateStateBooks(books);
-    }
+    this.props.getLocalBooks();
   }
-
-  updateStateBooks = (updatedBooks) => {
-    this.setState({ books: updatedBooks });
-    const JSONbooks = JSON.stringify(updatedBooks);
-    localStorage.setItem('books', JSONbooks);
-  };
 
   render() {
     return (
       <React.Fragment>
         <Header />
-        <Content
-          deleteBook={this.deleteBookHandler}
-          toggleBook={this.toggleBookHandler}
-        />
+        <Content />
       </React.Fragment>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getLocalBooks: () => dispatch(actions.getBooks()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

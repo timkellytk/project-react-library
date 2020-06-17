@@ -1,5 +1,3 @@
-/* export const DELETE_BOOK = 'DELETE_BOOK';
-export const TOGGLE_BOOK = 'TOGGLE_BOOK'; */
 import * as actionTypes from './actionTypes';
 
 export const deleteBook = (index) => {
@@ -13,5 +11,11 @@ export const toggleBook = (index) => {
   return {
     type: actionTypes.TOGGLE_BOOK,
     index: index,
+  };
+};
+
+export const getBooks = () => {
+  return {
+    type: actionTypes.GET_BOOKS,
   };
 };

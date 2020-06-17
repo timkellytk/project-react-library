@@ -4,5 +4,5 @@ export {
   inputChangedHandler,
   checkboxChangedHandler,
   addBook,
-} from './newBooks';
-export { deleteBook, toggleBook } from './books';
+} from './newBook';
+export { deleteBook, toggleBook, getBooks } from './books';
