@@ -7,10 +7,7 @@ const Book = (props) => {
   return (
     <div className={classes.Book}>
       <div className={classes.BookGradient}>
-        <div
-          className={classes.RemoveBook}
-          onClick={() => props.delete(props.id)}
-        >
+        <div className={classes.RemoveBook} onClick={props.delete}>
           x
         </div>
       </div>

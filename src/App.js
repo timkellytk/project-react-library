@@ -44,21 +44,6 @@ class App extends Component {
     localStorage.setItem('books', JSONbooks);
   };
 
-  toggleBookHandler = (index) => {
-    const updatedBooks = [...this.state.books];
-    const updatedBook = updatedBooks[index];
-
-    updatedBook.read = !this.state.books[index].read;
-    this.updateStateBooks(updatedBooks);
-  };
-
-  deleteBookHandler = (id) => {
-    const updatedBooks = this.state.books.filter((book, index) => {
-      return book.title + index !== id;
-    });
-    this.updateStateBooks(updatedBooks);
-  };
-
   render() {
     return (
       <React.Fragment>

@@ -1,6 +1,7 @@
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const DELETE_BOOK = 'DELETE_BOOK';
 export const INPUT_CHANGED_HANDLER = 'INPUT_CHANGED_HANDLER';
 export const CHECKBOX_CHANGED_HANDLER = 'CHECKBOX_CHANGED_HANDLER';
 export const ADD_BOOK = 'ADD_BOOK';
+export const DELETE_BOOK = 'DELETE_BOOK';
+export const TOGGLE_BOOK = 'TOGGLE_BOOK';

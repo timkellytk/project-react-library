@@ -58,6 +58,17 @@ const reducer = (state = initialState, action) => {
         newBook: { title: '', author: '', pages: '', read: true },
       };
       return updatedState3;
+    case actionTypes.DELETE_BOOK:
+      const updatedBooks = state.books.filter(
+        (book, index) => index !== action.index
+      );
+      return { ...state, books: updatedBooks };
+    case actionTypes.TOGGLE_BOOK:
+      const _updatedBook = { ...state.books[action.index] };
+      _updatedBook.read = !_updatedBook.read;
+      const _updatedBooks = [...state.books];
+      _updatedBooks[action.index] = _updatedBook;
+      return { ...state, books: _updatedBooks };
     default:
       return state;
   }

@@ -7,7 +7,7 @@ const Content = (props) => (
   <React.Fragment>
     <NewBook />
     <NewBookModal />
-    <Books delete={props.deleteBook} toggle={props.toggleBook} />
+    <Books />
   </React.Fragment>
 );
 
