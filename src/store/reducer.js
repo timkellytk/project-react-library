@@ -1,3 +1,5 @@
+import * as actionTypes from './actions';
+
 const initialState = {
   books: [
     {
@@ -20,11 +22,18 @@ const initialState = {
     },
   ],
   newBook: { title: '', author: '', pages: '', read: true },
-  showModal: false,
+  showModal: true,
 };
 
 const reducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case actionTypes.OPEN_MODAL:
+      return { ...state, showModal: true };
+    case actionTypes.CLOSE_MODAL:
+      return { ...state, showModal: false };
+    default:
+      return state;
+  }
 };
 
 export default reducer;

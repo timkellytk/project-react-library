@@ -9,7 +9,6 @@ const Content = (props) => (
     <NewBookModal
       newBook={props.newBook}
       add={props.addBook}
-      modal={props.modalStatus}
       inputChangeHandler={props.inputChangeHandler}
       checkboxChangeHandler={props.checkboxChangeHandler}
       close={props.closeModal}

@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './NewBookModal.module.css';
 import Button from '../../UI/Button/Button';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../../store/actions';
 
 const NewBookModal = (props) => {
   let showModalState = classes.NewBookSection;
@@ -57,11 +59,23 @@ const NewBookModal = (props) => {
           </form>
         </div>
       </div>
-      <div className={classes.CloseModal} onClick={props.close}>
+      <div className={classes.CloseModal} onClick={props.closeModal}>
         <div>X</div>
       </div>
     </div>
   );
 };
 
-export default NewBookModal;
+const mapStateToProps = (state) => {
+  return {
+    modal: state.showModal,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewBookModal);
