@@ -25,50 +25,84 @@ const initialState = {
   showModal: false,
 };
 
+const openModal = (state) => {
+  const updatedState = { ...state, showModal: true };
+  return updatedState;
+};
+
+const closeModal = (state) => {
+  const updatedState = {
+    ...state,
+    showModal: false,
+    newBook: { title: '', author: '', pages: '', read: true },
+  };
+  return updatedState;
+};
+
+const inputChangedHandler = (state, action) => {
+  const newBook = {
+    ...state.newBook,
+    [action.bookType]: action.input,
+  };
+  const updatedState = { ...state, newBook: newBook };
+  return updatedState;
+};
+
+const checkboxChangedHandler = (state) => {
+  const updatedBook = {
+    ...state.newBook,
+    read: !state.newBook.read,
+  };
+  const updatedState = { ...state, newBook: updatedBook };
+  return updatedState;
+};
+
+const addBook = (state) => {
+  const updatedBooks = state.books.concat(state.newBook);
+  const updatedState = {
+    ...state,
+    books: updatedBooks,
+    showModal: false,
+    newBook: { title: '', author: '', pages: '', read: true },
+  };
+  return updatedState;
+};
+
+const deleteBook = (state, action) => {
+  const updatedBooks = state.books.filter(
+    (book, index) => index !== action.index
+  );
+  const updatedState = { ...state, books: updatedBooks };
+  return updatedState;
+};
+
+const toggleBook = (state, action) => {
+  const updatedBook = { ...state.books[action.index] };
+  updatedBook.read = !updatedBook.read;
+
+  const updatedBooks = [...state.books];
+  updatedBooks[action.index] = updatedBook;
+
+  const updatedState = { ...state, books: updatedBooks };
+  return updatedState;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.OPEN_MODAL:
-      return { ...state, showModal: true };
+      return openModal(state);
     case actionTypes.CLOSE_MODAL:
-      return {
-        ...state,
-        showModal: false,
-        newBook: { title: '', author: '', pages: '', read: true },
-      };
+      return closeModal(state);
     case actionTypes.INPUT_CHANGED_HANDLER:
-      const newBook = {
-        ...state.newBook,
-        [action.bookType]: action.input,
-      };
-      const updatedState = { ...state, newBook: newBook };
-      return updatedState;
+      return inputChangedHandler(state, action);
     case actionTypes.CHECKBOX_CHANGED_HANDLER:
-      const updatedBook = {
-        ...state.newBook,
-        read: !state.newBook.read,
-      };
-      const updatedState2 = { ...state, newBook: updatedBook };
-      return updatedState2;
+      return checkboxChangedHandler(state);
     case actionTypes.ADD_BOOK:
-      const updatedBooks3 = state.books.concat(state.newBook);
-      const updatedState3 = {
-        ...state,
-        books: updatedBooks3,
-        showModal: false,
-        newBook: { title: '', author: '', pages: '', read: true },
-      };
-      return updatedState3;
+      return addBook(state);
     case actionTypes.DELETE_BOOK:
-      const updatedBooks = state.books.filter(
-        (book, index) => index !== action.index
-      );
-      return { ...state, books: updatedBooks };
+      return deleteBook(state, action);
     case actionTypes.TOGGLE_BOOK:
-      const _updatedBook = { ...state.books[action.index] };
-      _updatedBook.read = !_updatedBook.read;
-      const _updatedBooks = [...state.books];
-      _updatedBooks[action.index] = _updatedBook;
-      return { ...state, books: _updatedBooks };
+      return toggleBook(state, action);
     default:
       return state;
   }
