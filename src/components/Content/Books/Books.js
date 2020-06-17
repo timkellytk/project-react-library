@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Books.module.css';
 import Book from './Book/Book';
+import { connect } from 'react-redux';
 
 const Books = (props) => {
   const books = props.books.map((book, index) => {
@@ -27,4 +28,10 @@ const Books = (props) => {
   );
 };
 
-export default Books;
+const mapStateToProps = (state) => {
+  return {
+    books: state.books,
+  };
+};
+
+export default connect(mapStateToProps)(Books);

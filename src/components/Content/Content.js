@@ -14,11 +14,7 @@ const Content = (props) => (
       checkboxChangeHandler={props.checkboxChangeHandler}
       close={props.closeModal}
     />
-    <Books
-      books={props.books}
-      delete={props.deleteBook}
-      toggle={props.toggleBook}
-    />
+    <Books delete={props.deleteBook} toggle={props.toggleBook} />
   </React.Fragment>
 );
 
