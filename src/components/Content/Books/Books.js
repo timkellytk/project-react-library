@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Books.module.css';
 import Book from './Book/Book';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions';
+import * as actions from '../../../store/actions/index';
 
 const Books = (props) => {
   const books = props.books.map((book, index) => {
@@ -36,10 +36,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    delete: (index) =>
-      dispatch({ type: actionTypes.DELETE_BOOK, index: index }),
-    toggle: (index) =>
-      dispatch({ type: actionTypes.TOGGLE_BOOK, index: index }),
+    delete: (index) => dispatch(actions.deleteBook(index)),
+    toggle: (index) => dispatch(actions.toggleBook(index)),
   };
 };
 

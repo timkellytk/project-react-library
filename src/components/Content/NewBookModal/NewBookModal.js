@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './NewBookModal.module.css';
 import Button from '../../UI/Button/Button';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions';
+import * as actions from '../../../store/actions/index';
 
 const NewBookModal = (props) => {
   let showModalState = classes.NewBookSection;
@@ -86,16 +86,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL }),
+    closeModal: () => dispatch(actions.closeModal()),
     inputChangeHandler: (input, type) =>
-      dispatch({
-        type: actionTypes.INPUT_CHANGED_HANDLER,
-        input: input,
-        bookType: type,
-      }),
-    checkboxChangeHandler: () =>
-      dispatch({ type: actionTypes.CHECKBOX_CHANGED_HANDLER }),
-    addBookHandler: () => dispatch({ type: actionTypes.ADD_BOOK }),
+      dispatch(actions.inputChangedHandler(input, type)),
+    checkboxChangeHandler: () => dispatch(actions.checkboxChangedHandler()),
+    addBookHandler: () => dispatch(actions.addBook()),
   };
 };
 

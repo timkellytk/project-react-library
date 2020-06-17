@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../UI/Button/Button';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions';
+import * as actions from '../../../store/actions/index';
 
 const NewBook = (props) => (
   <div className="section">
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showModal: () => dispatch({ type: actionTypes.OPEN_MODAL }),
+    showModal: () => dispatch(actions.openModal()),
   };
 };
 
