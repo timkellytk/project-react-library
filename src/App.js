@@ -44,13 +44,6 @@ class App extends Component {
     localStorage.setItem('books', JSONbooks);
   };
 
-  addBookHandler = (event, book) => {
-    event.preventDefault();
-    const updatedBooks = this.state.books.concat(book);
-    this.updateStateBooks(updatedBooks);
-    this.closeModalHandler();
-  };
-
   toggleBookHandler = (index) => {
     const updatedBooks = [...this.state.books];
     const updatedBook = updatedBooks[index];
@@ -71,7 +64,6 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Content
-          addBook={this.addBookHandler}
           deleteBook={this.deleteBookHandler}
           toggleBook={this.toggleBookHandler}
         />

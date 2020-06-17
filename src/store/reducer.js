@@ -49,6 +49,15 @@ const reducer = (state = initialState, action) => {
       };
       const updatedState2 = { ...state, newBook: updatedBook };
       return updatedState2;
+    case actionTypes.ADD_BOOK:
+      const updatedBooks3 = state.books.concat(state.newBook);
+      const updatedState3 = {
+        ...state,
+        books: updatedBooks3,
+        showModal: false,
+        newBook: { title: '', author: '', pages: '', read: true },
+      };
+      return updatedState3;
     default:
       return state;
   }

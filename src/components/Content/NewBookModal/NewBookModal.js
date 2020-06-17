@@ -10,12 +10,17 @@ const NewBookModal = (props) => {
     showModalState = [classes.NewBookSection, classes.Show].join(' ');
   }
 
+  const _onSubmit = (event) => {
+    event.preventDefault();
+    props.addBookHandler();
+  };
+
   return (
     <div className={showModalState}>
       <div className={classes.NewBookFormContainer}>
         <h1>New Book</h1>
         <div>
-          <form onSubmit={(event) => props.add(event, props.newBook)}>
+          <form onSubmit={(event) => _onSubmit(event)}>
             <label>Title</label>
             <input
               type="text"
@@ -90,6 +95,7 @@ const mapDispatchToProps = (dispatch) => {
       }),
     checkboxChangeHandler: () =>
       dispatch({ type: actionTypes.CHECKBOX_CHANGED_HANDLER }),
+    addBookHandler: () => dispatch({ type: actionTypes.ADD_BOOK }),
   };
 };
 
