@@ -44,29 +44,6 @@ class App extends Component {
     localStorage.setItem('books', JSONbooks);
   };
 
-  inputChangeNewBookHandler = (event, property) => {
-    const updatedBook = { ...this.state.newBook };
-    updatedBook[property] = event.target.value;
-    this.setState({ newBook: updatedBook });
-  };
-
-  checkboxChangeNewBookHandler = (event) => {
-    const updatedBook = { ...this.state.newBook };
-    updatedBook.read = event.target.checked;
-    this.setState({ newBook: updatedBook });
-  };
-
-  showModalHandler = () => {
-    this.setState({ showModal: true });
-  };
-
-  closeModalHandler = () => {
-    this.setState({
-      showModal: false,
-      newBook: { title: '', author: '', pages: '', read: true },
-    });
-  };
-
   addBookHandler = (event, book) => {
     event.preventDefault();
     const updatedBooks = this.state.books.concat(book);
@@ -94,13 +71,6 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Content
-          showModal={this.showModalHandler}
-          closeModal={this.closeModalHandler}
-          modalStatus={this.state.showModal}
-          books={this.state.books}
-          newBook={this.state.newBook}
-          inputChangeHandler={this.inputChangeNewBookHandler}
-          checkboxChangeHandler={this.checkboxChangeNewBookHandler}
           addBook={this.addBookHandler}
           deleteBook={this.deleteBookHandler}
           toggleBook={this.toggleBookHandler}

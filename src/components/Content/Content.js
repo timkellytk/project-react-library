@@ -5,7 +5,7 @@ import Books from './Books/Books';
 
 const Content = (props) => (
   <React.Fragment>
-    <NewBook showModalHandler={props.showModal} />
+    <NewBook />
     <NewBookModal add={props.addBook} />
     <Books delete={props.deleteBook} toggle={props.toggleBook} />
   </React.Fragment>

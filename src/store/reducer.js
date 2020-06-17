@@ -22,7 +22,7 @@ const initialState = {
     },
   ],
   newBook: { title: '', author: '', pages: '', read: true },
-  showModal: true,
+  showModal: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,7 +30,11 @@ const reducer = (state = initialState, action) => {
     case actionTypes.OPEN_MODAL:
       return { ...state, showModal: true };
     case actionTypes.CLOSE_MODAL:
-      return { ...state, showModal: false };
+      return {
+        ...state,
+        showModal: false,
+        newBook: { title: '', author: '', pages: '', read: true },
+      };
     case actionTypes.INPUT_CHANGED_HANDLER:
       const newBook = {
         ...state.newBook,
