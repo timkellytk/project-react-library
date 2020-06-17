@@ -7,7 +7,6 @@ const Content = (props) => (
   <React.Fragment>
     <NewBook showModalHandler={props.showModal} />
     <NewBookModal
-      newBook={props.newBook}
       add={props.addBook}
       inputChangeHandler={props.inputChangeHandler}
       checkboxChangeHandler={props.checkboxChangeHandler}

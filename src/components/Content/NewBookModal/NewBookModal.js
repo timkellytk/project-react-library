@@ -22,7 +22,9 @@ const NewBookModal = (props) => {
               className={classes.TextField}
               placeholder="Book Title"
               value={props.newBook.title}
-              onChange={(event) => props.inputChangeHandler(event, 'title')}
+              onChange={(event) =>
+                props.inputChangeHandler(event.target.value, 'title')
+              }
               required
             />
             <label>Author</label>
@@ -31,7 +33,9 @@ const NewBookModal = (props) => {
               className={classes.TextField}
               placeholder="Author"
               value={props.newBook.author}
-              onChange={(event) => props.inputChangeHandler(event, 'author')}
+              onChange={(event) =>
+                props.inputChangeHandler(event.target.value, 'author')
+              }
               required
             />
             <label>Pages</label>
@@ -40,7 +44,9 @@ const NewBookModal = (props) => {
               className={classes.TextField}
               placeholder="0"
               value={props.newBook.pages}
-              onChange={(event) => props.inputChangeHandler(event, 'pages')}
+              onChange={(event) =>
+                props.inputChangeHandler(event.target.value, 'pages')
+              }
               required
             />
             <div className={classes.CheckboxField}>
@@ -69,12 +75,21 @@ const NewBookModal = (props) => {
 const mapStateToProps = (state) => {
   return {
     modal: state.showModal,
+    newBook: state.newBook,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL }),
+    inputChangeHandler: (input, type) =>
+      dispatch({
+        type: actionTypes.INPUT_CHANGED_HANDLER,
+        input: input,
+        bookType: type,
+      }),
+    checkboxChangeHandler: () =>
+      dispatch({ type: actionTypes.CHECKBOX_CHANGED_HANDLER }),
   };
 };
 

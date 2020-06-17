@@ -31,6 +31,20 @@ const reducer = (state = initialState, action) => {
       return { ...state, showModal: true };
     case actionTypes.CLOSE_MODAL:
       return { ...state, showModal: false };
+    case actionTypes.INPUT_CHANGED_HANDLER:
+      const newBook = {
+        ...state.newBook,
+        [action.bookType]: action.input,
+      };
+      const updatedState = { ...state, newBook: newBook };
+      return updatedState;
+    case actionTypes.CHECKBOX_CHANGED_HANDLER:
+      const updatedBook = {
+        ...state.newBook,
+        read: !state.newBook.read,
+      };
+      const updatedState2 = { ...state, newBook: updatedBook };
+      return updatedState2;
     default:
       return state;
   }
