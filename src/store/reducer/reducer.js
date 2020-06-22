@@ -3,21 +3,21 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   books: [
     {
-      title: 'This book is full of yarns of Ballarat',
-      author: 'Big Kev',
-      pages: 123,
+      title: "The Innovator's Dilemna",
+      author: 'Clayton M. Christensen',
+      pages: 286,
       read: true,
     },
     {
-      title: 'Byron bay, where it all started with emma',
-      author: 'Harry Mcallister',
-      pages: 234,
-      read: false,
+      title: 'Sapiens',
+      author: 'Yuval Noah Harari',
+      pages: 442,
+      read: true,
     },
     {
-      title: "Why I won't drive to Newport",
-      author: 'Jack Penny',
-      pages: 523,
+      title: 'Thinking, Fast and Slow',
+      author: 'Daniel Kahneman',
+      pages: 467,
       read: false,
     },
   ],

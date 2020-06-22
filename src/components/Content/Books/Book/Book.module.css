@@ -92,14 +92,14 @@
 }
 
 .BookAuthor {
-  font-size: 34px;
-  font-weight: 600;
-}
-
-.BookTitle {
   margin-top: 20px;
   font-size: 20px;
   line-height: 28px;
+}
+
+.BookTitle {
+  font-size: 34px;
+  font-weight: 600;
 }
 
 .PagesBlock {

@@ -17,8 +17,8 @@ const Book = (props) => {
         <span>Classics</span>
       </div>
       <div className={classes.BookInfo}>
-        <div className={classes.BookAuthor}>{props.author}</div>
         <div className={classes.BookTitle}>{props.title}</div>
+        <div className={classes.BookAuthor}>{props.author}</div>
       </div>
       <div className={classes.PagesBlock}>
         <div>{props.pages} pages</div>
