@@ -97,12 +97,9 @@ const toggleBook = (state, action) => {
   return updatedState;
 };
 
-const getBooks = (state) => {
-  const JSONbooks = localStorage.getItem('books');
-  const books = JSON.parse(JSONbooks);
-
-  if (JSONbooks && state.books !== books) {
-    const updatedState = { ...state, books: books };
+const getBooks = (state, action) => {
+  if (state.books !== action.books) {
+    const updatedState = { ...state, books: action.books };
     return updatedState;
   }
 };
@@ -139,7 +136,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.TOGGLE_BOOK:
       return toggleBook(state, action);
     case actionTypes.GET_BOOKS:
-      return getBooks(state);
+      return getBooks(state, action);
     case actionTypes.LOGIN:
       return login(state, action);
     case actionTypes.LOGOUT:

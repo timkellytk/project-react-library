@@ -9,7 +9,10 @@ import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    this.props.getLocalBooks();
+    const JSONbooks = localStorage.getItem('books');
+    const books = JSON.parse(JSONbooks);
+
+    this.props.getLocalBooks(books);
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user && !this.props.user) {
@@ -55,7 +58,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getLocalBooks: () => dispatch(actions.getBooks()),
+    getLocalBooks: (books) => dispatch(actions.getBooks(books)),
     login: (user) => dispatch(actions.login(user)),
     logout: () => dispatch(actions.logout()),
     finishLoading: () => dispatch(actions.finishLoading()),

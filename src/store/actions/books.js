@@ -14,8 +14,9 @@ export const toggleBook = (index) => {
   };
 };
 
-export const getBooks = () => {
+export const getBooks = (books) => {
   return {
     type: actionTypes.GET_BOOKS,
+    books: books,
   };
 };
