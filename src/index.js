@@ -42,9 +42,6 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-// test
-firebase.auth().onAuthStateChanged((user) => console.log(user));
-
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+  user: null,
   books: [
     {
       title: "The Innovator's Dilemna",
@@ -105,6 +106,16 @@ const getBooks = (state) => {
   }
 };
 
+const login = (state, action) => {
+  const updatedState = { ...state, user: action.user };
+  return updatedState;
+};
+
+const logout = (state) => {
+  const updatedState = { ...state, user: null };
+  return updatedState;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.OPEN_MODAL:
@@ -123,6 +134,10 @@ const reducer = (state = initialState, action) => {
       return toggleBook(state, action);
     case actionTypes.GET_BOOKS:
       return getBooks(state);
+    case actionTypes.LOGIN:
+      return login(state, action);
+    case actionTypes.LOGOUT:
+      return logout(state);
     default:
       return state;
   }
