@@ -8,3 +8,4 @@ export const TOGGLE_BOOK = 'TOGGLE_BOOK';
 export const GET_BOOKS = 'GET_BOOKS';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const FINISH_LOADING = ' FINISH_LOADING';

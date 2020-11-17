@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   user: null,
+  loadingAuth: true,
   books: [
     {
       title: "The Innovator's Dilemna",
@@ -116,6 +117,11 @@ const logout = (state) => {
   return updatedState;
 };
 
+const finishLoading = (state) => {
+  const updatedState = { ...state, loadingAuth: false };
+  return updatedState;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.OPEN_MODAL:
@@ -138,6 +144,8 @@ const reducer = (state = initialState, action) => {
       return login(state, action);
     case actionTypes.LOGOUT:
       return logout(state);
+    case actionTypes.FINISH_LOADING:
+      return finishLoading(state);
     default:
       return state;
   }

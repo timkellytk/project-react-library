@@ -12,3 +12,9 @@ export const logout = () => {
     type: actionTypes.LOGOUT,
   };
 };
+
+export const finishLoading = () => {
+  return {
+    type: actionTypes.FINISH_LOADING,
+  };
+};
