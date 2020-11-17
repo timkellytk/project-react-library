@@ -31,12 +31,11 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        {this.props.loadingAuth && <Loading />}
-        {!this.props.loadingAuth && <Header />}
-        {this.props.user && !this.props.loadingAuth && <Content />}
-        {!this.props.user && !this.props.loadingAuth && <Auth />}
-      </React.Fragment>
+      <>
+        {this.props.loadingAuth ? <Loading /> : <Header />}
+        {!this.props.loadingAuth && this.props.user && <Content />}
+        {!this.props.loadingAuth && !this.props.user && <Auth />}
+      </>
     );
   }
 }
