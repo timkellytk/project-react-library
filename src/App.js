@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import BookLibrary from './components/BookLibrary/BookLibrary';
 import Auth from './components/Auth/Auth';
-import Content from './components/Content/Content';
-import Loading from './components/UI/Loading/Loading';
-import './App.css';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
+import './App.css';
 
 class App extends Component {
   componentDidMount() {
@@ -31,11 +30,18 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        {this.props.loadingAuth ? <Loading /> : <Header />}
-        {!this.props.loadingAuth && this.props.user && <Content />}
-        {!this.props.loadingAuth && !this.props.user && <Auth />}
-      </>
+      <BrowserRouter>
+        <Switch>
+          {this.props.user && (
+            <Route path="/project-react-library/library">
+              <BookLibrary />
+            </Route>
+          )}
+          <Route path="/project-react-library/">
+            <Auth />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

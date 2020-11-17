@@ -25,7 +25,7 @@ firebase.initializeApp(firebaseConfig);
 
 // FirebaseUI
 const uiConfig = {
-  signInSuccessUrl: '<url-to-redirect-to-on-success>',
+  signInSuccessUrl: '/project-react-library/library',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
