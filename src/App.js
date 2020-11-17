@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header/Header';
+import Auth from './components/Auth/Auth';
 import Content from './components/Content/Content';
 import './App.css';
 import { connect } from 'react-redux';
@@ -14,6 +15,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header />
+        <Auth />
         <Content />
       </React.Fragment>
     );
