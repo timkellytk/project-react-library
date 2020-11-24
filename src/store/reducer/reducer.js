@@ -57,12 +57,23 @@ const addBook = (state) => {
   return updatedState;
 };
 
+const deleteBookDB = (book) => {
+  const deletedBookQuery = db
+    .collection('books')
+    .where('title', '==', book.title);
+  deletedBookQuery.get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => doc.ref.delete());
+  });
+};
+
 const deleteBook = (state, action) => {
+  const deletedBook = state.books.find((book, index) => index === action.index);
+  deleteBookDB(deletedBook);
+
   const updatedBooks = state.books.filter(
     (book, index) => index !== action.index
   );
   const updatedState = { ...state, books: updatedBooks };
-  storeBooksDB(updatedBooks);
   return updatedState;
 };
 
