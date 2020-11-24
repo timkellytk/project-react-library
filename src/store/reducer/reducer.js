@@ -85,7 +85,6 @@ const toggleBook = (state, action) => {
   updatedBooks[action.index] = updatedBook;
 
   const updatedState = { ...state, books: updatedBooks };
-  storeBooksDB(updatedBooks);
   return updatedState;
 };
 
