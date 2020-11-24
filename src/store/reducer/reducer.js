@@ -1,28 +1,10 @@
+import { db } from '../../index';
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   user: null,
   loadingAuth: true,
-  books: [
-    {
-      title: "The Innovator's Dilemna",
-      author: 'Clayton M. Christensen',
-      pages: 286,
-      read: true,
-    },
-    {
-      title: 'Sapiens',
-      author: 'Yuval Noah Harari',
-      pages: 442,
-      read: true,
-    },
-    {
-      title: 'Thinking, Fast and Slow',
-      author: 'Daniel Kahneman',
-      pages: 467,
-      read: false,
-    },
-  ],
+  books: [],
   newBook: { title: '', author: '', pages: '', read: true },
   showModal: false,
 };
@@ -59,9 +41,8 @@ const checkboxChangedHandler = (state) => {
   return updatedState;
 };
 
-const storeLocalBooks = (updatedBooks) => {
-  const JSONbooks = JSON.stringify(updatedBooks);
-  localStorage.setItem('books', JSONbooks);
+const storeBooksDB = (newBook, uid) => {
+  db.collection('books').add({ ...newBook, uid });
 };
 
 const addBook = (state) => {
@@ -72,7 +53,7 @@ const addBook = (state) => {
     showModal: false,
     newBook: { title: '', author: '', pages: '', read: true },
   };
-  storeLocalBooks(updatedBooks);
+  storeBooksDB(state.newBook, state.user.uid);
   return updatedState;
 };
 
@@ -81,7 +62,7 @@ const deleteBook = (state, action) => {
     (book, index) => index !== action.index
   );
   const updatedState = { ...state, books: updatedBooks };
-  storeLocalBooks(updatedBooks);
+  storeBooksDB(updatedBooks);
   return updatedState;
 };
 
@@ -93,7 +74,7 @@ const toggleBook = (state, action) => {
   updatedBooks[action.index] = updatedBook;
 
   const updatedState = { ...state, books: updatedBooks };
-  storeLocalBooks(updatedBooks);
+  storeBooksDB(updatedBooks);
   return updatedState;
 };
 

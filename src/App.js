@@ -10,22 +10,26 @@ import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    const loadBooks = async () => {
-      const dbBooks = [];
-      const request = await db.collection('books').get();
-      request.forEach((doc) => dbBooks.push(doc.data()));
-      return await dbBooks;
-    };
-    const loadedBooks = loadBooks();
-    loadedBooks.then((books) => this.props.getLocalBooks(books));
-
     firebase.auth().onAuthStateChanged((user) => {
       if (user && !this.props.user) {
         const displayName = user.displayName;
         const photoURL = user.photoURL;
-        const newUser = { displayName, photoURL };
+        const uid = user.uid;
+        const newUser = { displayName, photoURL, uid };
 
         this.props.login(newUser);
+
+        const loadBooks = async () => {
+          const dbBooks = [];
+          const request = await db
+            .collection('books')
+            .where('uid', '==', uid)
+            .get();
+          request.forEach((doc) => dbBooks.push(doc.data()));
+          return await dbBooks;
+        };
+        const loadedBooks = loadBooks();
+        loadedBooks.then((books) => this.props.getLocalBooks(books));
       } else if (!user && this.props.user) {
         this.props.logout();
       }
