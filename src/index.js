@@ -23,6 +23,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+export const db = firebase.firestore();
+
 // FirebaseUI
 const uiConfig = {
   signInSuccessUrl: '/project-react-library/library',

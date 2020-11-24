@@ -5,14 +5,19 @@ import Auth from './components/Auth/Auth';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
+import { db } from './index';
 import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    const JSONbooks = localStorage.getItem('books');
-    const books = JSON.parse(JSONbooks);
-
-    this.props.getLocalBooks(books);
+    const loadBooks = async () => {
+      const dbBooks = [];
+      const request = await db.collection('books').get();
+      request.forEach((doc) => dbBooks.push(doc.data()));
+      return await dbBooks;
+    };
+    const loadedBooks = loadBooks();
+    loadedBooks.then((books) => this.props.getLocalBooks(books));
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user && !this.props.user) {
